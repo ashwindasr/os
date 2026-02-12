@@ -11,5 +11,6 @@ fi
 jq 'del(.["check-passwd","check-groups"])' /usr/share/rpm-ostree/treefile.json > filtered.json
 
 . /etc/os-release
-rpm-ostree compose extensions filtered.json "extensions/${ID}-${VERSION_ID}.yaml" \
+# Transform VERSION_ID from x.y format to xy format (e.g., 9.8 -> 98)
+rpm-ostree compose extensions filtered.json "extensions/${ID}-${VERSION_COMPACT}.yaml" \
     --rootfs=/ --output-dir=/usr/share/rpm-ostree/extensions/
