@@ -11,7 +11,7 @@ fi
 jq 'del(.["check-passwd","check-groups"])' /usr/share/rpm-ostree/treefile.json > filtered.json
 
 . /etc/os-release
-# Transform VERSION_ID from x.y format to x-y format (e.g., 9.8 -> 9-8)
-VERSION_DASH=$(echo "${VERSION_ID}" | sed 's/\./-/')
-rpm-ostree compose extensions filtered.json "extensions/${ID}-${VERSION_DASH}.yaml" \
+# Transform VERSION_ID from x.y format to xy format (e.g., 9.8 -> 98)
+VERSION_COMPACT=${VERSION_ID//./}
+rpm-ostree compose extensions filtered.json "extensions/${ID}-${VERSION_COMPACT}.yaml" \
     --rootfs=/ --output-dir=/usr/share/rpm-ostree/extensions/
