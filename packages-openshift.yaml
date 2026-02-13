@@ -15,11 +15,11 @@ conditional-include:
   - if: osversion == "rhel-9.8"
     include:
       repos:
-        - rhel-98-baseos
-        - rhel-98-appstream
-        - rhel-98-early-kernel
-        - rhel-98-fast-datapath
-        - rhel-98-server-ose-4.22
+        - rhel-9.8-baseos
+        - rhel-9.8-appstream
+        - rhel-9.8-early-kernel
+        - rhel-9.8-fast-datapath
+        - rhel-9.8-server-ose-4.22
   - if: osversion == "rhel-10.2"
     include:
       repos:
